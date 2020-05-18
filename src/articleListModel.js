@@ -4,6 +4,6 @@ function ArticleListModel() {
 
 ArticleListModel.prototype.createArticles = function(data) {
   data.response.results.forEach(item => { 
-    this.articles.push(new Article(item.webTitle, item.webUrl))
+    this.articles.push(new ArticleModel(item.webTitle, item.webUrl))
   });
 };

@@ -4,7 +4,8 @@ function ArticleListView(articleList) {
 
 ArticleListView.prototype.showArticles = function(){
   var string = ""
-  articleList.articles.forEach(article => { 
-    string += "<p>" + article.webTitle + "</p>"
+  this.articleList.articles.forEach(article => { 
+    string += `<a href="${article.getWebUrl()}">` + article.getTitle() + "</a>"
   });
+  return string
 }
