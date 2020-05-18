@@ -1,4 +1,3 @@
-const ArticleModel = require('./articleModel')
 function ArticleListModel() {
   this.articles = []
 };

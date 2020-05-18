@@ -1,5 +1,3 @@
-const ArticleListModel = require('./articleListModel')
-
 function ArticleListView(articleList) {
   this.articleList = articleList
 }

@@ -1,14 +1,16 @@
-const articles = require('articleListModel')
+(function(exports) {
+  function ArticleModel(webTitle, webUrl) {
+    this.webTitle = webTitle
+    this.webUrl = webUrl
+  }
 
-function ArticleModel(webTitle, webUrl) {
-  this.webTitle = webTitle
-  this.webUrl = webUrl
-}
+  ArticleModel.prototype.getTitle = function(){
+    return this.webTitle
+  };
 
-ArticleModel.prototype.getTitle = function(){
-  return this.webTitle
-};
+  ArticleModel.prototype.getWebUrl = function(){
+    return this.webUrl
+  };
+  exports.ArticleModel = ArticleModel
 
-ArticleModel.prototype.getWebUrl = function(){
-  return this.webUrl
-};
+})(this)

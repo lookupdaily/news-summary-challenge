@@ -1,9 +1,6 @@
-const ArticleListModel = require('./articleListModel')
-const ArticleListView = require('./articleListView')
-
 var xhr = new XMLHttpRequest();
 var articles = document.getElementById("articles")
-var articleListModel = new ArticleListModel
+var articleListModel = new ArticleListModel()
 var articleListView = new ArticleListView(articleListModel)
 
 xhr.onload = function () {
