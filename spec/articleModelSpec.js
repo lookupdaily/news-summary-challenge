@@ -10,5 +10,8 @@ describe('articleModelSpec', () => {
     expect(article.getWebUrl()).toEqual('webUrl');
   });
 
+  it('cannot be created without two arguments', () => {
+    expect(function() {new ArticleModel('webTitle')}).toThrowError('Two arguments required')
+  })
 });
 
