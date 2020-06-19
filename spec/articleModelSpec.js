@@ -14,4 +14,3 @@ describe('articleModelSpec', () => {
     expect(function() {new ArticleModel('webTitle')}).toThrowError('Two arguments required')
   })
 });
-

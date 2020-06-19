@@ -3,7 +3,6 @@
     if(webTitle === undefined || webUrl === undefined) throw new Error('Two arguments required')
     this.webTitle = webTitle
     this.webUrl = webUrl
-    
   }
 
   ArticleModel.prototype.getTitle = function(){
