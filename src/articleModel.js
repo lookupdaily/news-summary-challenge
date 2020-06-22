@@ -16,3 +16,4 @@
   exports.ArticleModel = ArticleModel
 
 })(this)
+
