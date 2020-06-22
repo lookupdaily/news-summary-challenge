@@ -9,17 +9,32 @@ describe('articleListView', () => {
     expect(articleView.showArticles()).toEqual("<ul></ul>");
   });
 
-  it('shows an article', () => {
-    const article = {webTitle: "webTitle", webUrl: "webUrl"}
-    const articleListSpy = {
-      getArticles: jasmine.createSpy().and.returnValue([{
+  describe('when articles to display', () => {
+    let article
+    beforeEach(() => {
+      article = {
         getWebUrl: jasmine.createSpy().and.returnValue('webUrl'),
         getTitle: jasmine.createSpy().and.returnValue('webTitle')
-      }]),
-    };
+      }
+    })
 
-    const articleView = new ArticleListView(articleListSpy);
-    expect(articleView.showArticles()).toEqual(`<ul><li><a href="webUrl">webTitle</a></li></ul>`)
-  });
+    it('shows one article', () => {
+      const articleListSpy = {
+        getArticles: jasmine.createSpy().and.returnValue([article]),
+      };
+      const articleView = new ArticleListView(articleListSpy);
+      expect(articleView.showArticles()).toEqual(`<ul><li><a href="webUrl">webTitle</a></li></ul>`)
+    });
+  
+    it('shows more than one article', () => {
+      const articleListSpy = {
+        getArticles: jasmine.createSpy().and.returnValue([article, article])
+      }
+  
+      const articleView = new ArticleListView(articleListSpy);
+      expect(articleView.showArticles()).toEqual(`<ul><li><a href="webUrl">webTitle</a></li><li><a href="webUrl">webTitle</a></li></ul>`)
+    })
+  })
+  
 });
 
