@@ -3,8 +3,12 @@ function ArticleListModel(articleModel = ArticleModel) {
   this.articleModel = articleModel
 };
 
-ArticleListModel.prototype.createArticles = function(data) {
-  data.response.results.forEach(item => { 
-    this.articles.push(new this.articleModel(item.webTitle, item.webUrl))
+  ArticleListModel.prototype.createArticles = function(data) {
+    data.response.results.forEach(item => { 
+      this.articles.push(new this.articleModel(item.webTitle, item.webUrl))
   });
+
+  ArticleListModel.prototype.getArticles = function() {
+    return this.articles
+  }; 
 };
