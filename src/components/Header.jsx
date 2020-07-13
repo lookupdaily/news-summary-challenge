@@ -1,14 +1,20 @@
 'use strict';
 
-const e = React.createElement;
-
-function Header() {
-  return e(
+const element = React.createElement;
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+  } 
+  render () {
+    return (
       <div>
         <h1>Newsreader</h1>
       </div>
     );
-}
+  } 
+};
 
 const domContainer = document.querySelector('#header');
-ReactDOM.render(e(Header), domContainer);
+ReactDOM.render(element(Header), domContainer);
+
+

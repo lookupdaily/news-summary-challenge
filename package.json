@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/lookupdaily/news-summary-challenge#readme",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2",
     "http-server": "^0.12.3"
   }
 }
