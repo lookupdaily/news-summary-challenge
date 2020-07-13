@@ -16,22 +16,58 @@ var Articles = function (_React$Component) {
   function Articles(props) {
     _classCallCheck(this, Articles);
 
-    var _this = _possibleConstructorReturn(this, (Articles.__proto__ || Object.getPrototypeOf(Articles)).call(this, props));
-
-    _this.state = {
-      articleList: articleList
-    };
-    return _this;
+    return _possibleConstructorReturn(this, (Articles.__proto__ || Object.getPrototypeOf(Articles)).call(this, props));
   }
 
   _createClass(Articles, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.getArticles();
+    }
+  }, {
+    key: 'getArticles',
+    value: function getArticles() {
+      xhr.onload = function () {
+        // if (xhr.status <= 200 && xhr.status < 300) {
+        if (xhr.status < 300) {
+          var data = JSON.parse(this.response);
+          this.props.articleList.createArticles(data);
+        } else {
+          console.log('The request failed!');
+        }
+      };
+
+      xhr.open('GET', 'http://news-summary-api.herokuapp.com/guardian?apiRequestUrl=http://content.guardianapis.com/football');
+      xhr.send();
+    }
+  }, {
     key: 'render',
     value: function render() {
-      return React.createElement(
-        'div',
-        null,
-        React.createElement('ul', null)
-      );
+      console.log(this.props);
+      if (this.props.articleList.articles) {
+
+        return React.createElement(
+          'div',
+          null,
+          this.props.articleList.articles.map(function (article) {
+            React.createElement(
+              'div',
+              null,
+              React.createElement(
+                'a',
+                { href: article.getWebUrl(), target: 'blank' },
+                article.getTitle()
+              )
+            );
+          })
+        );
+      } else {
+        return React.createElement(
+          'div',
+          null,
+          'No Articles'
+        );
+      }
     }
   }]);
 
@@ -41,4 +77,4 @@ var Articles = function (_React$Component) {
 ;
 
 var domContainer = document.querySelector('#articles');
-ReactDOM.render(element(Articles), domContainer);
+ReactDOM.render(React.createElement(Articles, { articleList: new ArticleListModel() }), domContainer);
